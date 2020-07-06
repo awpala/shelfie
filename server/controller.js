@@ -13,5 +13,13 @@ module.exports = {
         db.create_product({product_name, price, img_url})
         .then(() => res.sendStatus(200))
         .catch(err => res.status(500).send(err))
+    },
+    deleteProduct: (req, res) => {
+        const{ id } = req.params;
+        const db = req.app.get('db');
+
+        db.delete_product(id)
+        .then(() => res.sendStatus(200))
+        .catch(err => res.status(500).send(err));
     }
 }

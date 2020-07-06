@@ -3,7 +3,7 @@ import './Product.css';
 
 class Product extends Component {
     render() {
-        const { img_url: imgURL, product_name: productName , price: productPrice } = this.props.product;
+        const { product_id: id, img_url: imgURL, product_name: productName , price: productPrice } = this.props.product;
         
         return (
             <div className="product-card">
@@ -11,6 +11,14 @@ class Product extends Component {
                 <div className="product-attr">
                     <p>{productName}</p>
                     <p>${productPrice.toFixed(2)}</p>
+                    <div className="product-btn">
+                        <button onClick={this.props.deleteFn(id)}>
+                            Delete
+                        </button>
+                        <button>
+                            Edit
+                        </button>
+                    </div>
                 </div>
             </div>
         );

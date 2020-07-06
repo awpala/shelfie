@@ -39,6 +39,7 @@ class App extends Component {
         <main>
           <Dashboard
             inventory={this.state.inventory}
+            getFn={this.getInventory}
           />
           <Form
             getFn={this.getInventory}
