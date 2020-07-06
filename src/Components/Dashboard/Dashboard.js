@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Dashboard.css';
 
 import Product from '../Product/Product';
 

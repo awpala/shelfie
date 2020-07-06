@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Product.css';
 
 class Product extends Component {
     render() {
@@ -6,9 +7,11 @@ class Product extends Component {
         
         return (
             <div className="product-card">
-                <img alt={"Missing Image"} src={imgURL}/>
-                <p>{productName}</p>
-                <p>${productPrice.toFixed(2)}</p>
+                <img alt={productName} src={imgURL}/>
+                <div className="product-attr">
+                    <p>{productName}</p>
+                    <p>${productPrice.toFixed(2)}</p>
+                </div>
             </div>
         );
     }

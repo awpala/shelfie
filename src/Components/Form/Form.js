@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Form.css';
 import axios from 'axios';
 
 class Form extends Component {
@@ -48,6 +49,7 @@ class Form extends Component {
     render() {
         return (
             <section className="form">
+                <img alt={this.state.productName} src={this.state.imgURL}/>
                 <p className="form-field">Image URL</p>
                 <input
                     type={"text"}
@@ -66,12 +68,14 @@ class Form extends Component {
                     value={this.state.productPrice}
                     onChange={e => this.handlePrice(e.target.value)}
                 />
-                <button onClick={this.handleCancel}>
-                    Cancel
-                </button>
-                <button onClick={this.handleAdd}>
-                Add to Inventory
-                </button>
+                <div className="form-buttons">
+                    <button onClick={this.handleCancel}>
+                        Cancel
+                    </button>
+                    <button onClick={this.handleAdd}>
+                        Add to Inventory
+                    </button>
+                </div>
             </section>
         );
     }
