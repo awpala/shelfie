@@ -5,5 +5,13 @@ module.exports = {
         db.get_inventory()
         .then(products => res.status(200).send(products))
         .catch(err => res.status(500).send(err));
+    },
+    createProduct: (req, res) => {
+        const { product_name, price, img_url } = req.body;
+        const db = req.app.get('db');
+
+        db.create_product({product_name, price, img_url})
+        .then(() => res.sendStatus(200))
+        .catch(err => res.status(500).send(err))
     }
 }
