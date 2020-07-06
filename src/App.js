@@ -14,6 +14,8 @@ class App extends Component {
     this.state = {
       inventory: []
     }
+
+    this.getInventory = this.getInventory.bind(this);
   }
 
   componentDidMount(){
@@ -26,6 +28,10 @@ class App extends Component {
     .catch(err => console.log(err));
   }
 
+  addProduct = () => {
+
+  }
+
   render() {
     return (
       <div className="App">
@@ -33,7 +39,9 @@ class App extends Component {
         <Dashboard
           inventory={this.state.inventory}
         />
-        <Form />
+        <Form
+          getFn={this.getInventory}
+        />
       </div>
     );
   }
