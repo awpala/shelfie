@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './Product.css';
 
 class Product extends Component {
+    handleDelete = () => {
+        this.props.deleteFn(this.props.product.product_id);
+    }
+
     render() {
         const { product_id: id, img_url: imgURL, product_name: productName , price: productPrice } = this.props.product;
         
@@ -12,7 +16,7 @@ class Product extends Component {
                     <p>{productName}</p>
                     <p>${productPrice.toFixed(2)}</p>
                     <div className="product-btn">
-                        <button onClick={this.props.deleteFn(id)}>
+                        <button onClick={this.handleDelete}>
                             Delete
                         </button>
                         <button>

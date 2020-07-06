@@ -8,21 +8,21 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
 
-        this.handleDelete = this.handleDelete.bind(this);
+        this.deleteProduct = this.deleteProduct.bind(this);
     }
 
-    handleDelete = (id) => {
+    deleteProduct = (id) => {
         axios.delete(`/api/product/${id}`)
         .then(() => this.props.getFn())
         .catch(err => console.log(err));
     }
 
     render() {
-        const mappedInventory = this.props.inventory.map( (product) => (
+        const mappedInventory = this.props.inventory.map( (product, index) => (
             <Product
-                key={product.product_id}
+                key={index}
                 product={product}
-                deleteFn={this.handleDelete}
+                deleteFn={this.deleteProduct}
             />
         ));
 

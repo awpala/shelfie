@@ -28,10 +28,6 @@ class App extends Component {
     .catch(err => console.log(err));
   }
 
-  addProduct = () => {
-
-  }
-
   render() {
     return (
       <div className="App">
