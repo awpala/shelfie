@@ -16,6 +16,8 @@ massive({
     console.log('db connected');
 });
 
-// TO-DO: Endpoints
+// Endpoints
+app.get('/api/inventory', ctrl.getInventory);
+
 
 app.listen(SERVER_PORT, () => console.log(`Server is running on port ${SERVER_PORT}`));
