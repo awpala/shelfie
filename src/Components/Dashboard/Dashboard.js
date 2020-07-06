@@ -4,9 +4,9 @@ import Product from '../Product/Product';
 
 class Dashboard extends Component {
     render() {
-        const mappedInventory = this.props.inventory.map( (product, index) => (
+        const mappedInventory = this.props.inventory.map( (product) => (
             <Product
-                key={index}
+                key={product.product_id}
                 product={product}
             />
         ));
