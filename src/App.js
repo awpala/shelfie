@@ -12,10 +12,12 @@ class App extends Component {
     super(props);
 
     this.state = {
-      inventory: []
+      inventory: [],
+      selectedProductId: null
     }
 
     this.getInventory = this.getInventory.bind(this);
+    this.setSelected = this.setSelected.bind(this);
   }
 
   componentDidMount(){
@@ -28,6 +30,10 @@ class App extends Component {
     .catch(err => console.log(err));
   }
 
+  setSelected = (id) => {
+    this.setState({ selectedProductId: id });
+  }
+
   render() {
     return (
       <div className="App">
@@ -36,9 +42,11 @@ class App extends Component {
           <Dashboard
             inventory={this.state.inventory}
             getFn={this.getInventory}
+            setFn={this.setSelected}
           />
           <Form
             getFn={this.getInventory}
+            selectedProductId={this.state.selectedProductId}
           />
         </main>
       </div>

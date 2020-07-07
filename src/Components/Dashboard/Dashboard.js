@@ -23,6 +23,7 @@ class Dashboard extends Component {
                 key={index}
                 product={product}
                 deleteFn={this.deleteProduct}
+                setFn={this.props.setFn}
             />
         ));
 

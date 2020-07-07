@@ -6,8 +6,12 @@ class Product extends Component {
         this.props.deleteFn(this.props.product.product_id);
     }
 
+    handleEdit = () => {
+        this.props.setFn(this.props.product.product_id);
+    }
+
     render() {
-        const { product_id: id, img_url: imgURL, product_name: productName , price: productPrice } = this.props.product;
+        const { img_url: imgURL, product_name: productName , price: productPrice } = this.props.product;
         
         return (
             <div className="product-card">
@@ -19,7 +23,7 @@ class Product extends Component {
                         <button onClick={this.handleDelete}>
                             Delete
                         </button>
-                        <button>
+                        <button onClick={this.handleEdit}>
                             Edit
                         </button>
                     </div>

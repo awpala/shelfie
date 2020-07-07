@@ -9,8 +9,30 @@ class Form extends Component {
         this.state = {
             imgURL: "",
             productName: "",
-            productPrice: 0
+            productPrice: 0,
+            editProductId: null
         }
+    }
+
+    componentDidUpdate(prevProps) {
+        const { selectedProductId } = this.props;
+        
+        if(selectedProductId !== prevProps.selectedProductId) {
+            this.setState({ editProductId: selectedProductId });
+
+            if(selectedProductId) {
+                this.getProduct(selectedProductId);
+            }
+        }
+    }
+    
+    getProduct = (id) => {
+        axios.get(`api/product/${id}`)
+        .then(res => {
+            const{ img_url: imgURL, product_name: productName, price: productPrice } = res.data[0];
+            
+            this.setState({ imgURL, productName, productPrice })
+        })
     }
 
     // event handler functions
@@ -30,7 +52,8 @@ class Form extends Component {
         this.setState({
             imgURL: "",
             productName: "",
-            productPrice: 0
+            productPrice: 0,
+            editProductId: null
         })
     }
 
@@ -44,6 +67,10 @@ class Form extends Component {
         .catch(err => console.log(err));
 
         this.handleCancel(); // clear inputs
+    }
+
+    handleSave = () => {
+        // TO-DO
     }
     
     render() {
@@ -72,9 +99,18 @@ class Form extends Component {
                     <button onClick={this.handleCancel}>
                         Cancel
                     </button>
-                    <button onClick={this.handleAdd}>
-                        Add to Inventory
-                    </button>
+                    {!this.state.editProductId
+                        ? (
+                            <button onClick={this.handleAdd}>
+                                Add to Inventory
+                            </button>
+                        )
+                        : (
+                            <button onClick={this.handleSave}>
+                                Save Changes
+                            </button>
+                        )
+                    }
                 </div>
             </section>
         );
