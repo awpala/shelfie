@@ -20,7 +20,7 @@ massive({
 app.get('/api/inventory', ctrl.getInventory);
 app.get('/api/product/:id', ctrl.getProduct);
 app.post('/api/product', ctrl.createProduct);
+app.put('/api/product/:id', ctrl.editProduct);
 app.delete('/api/product/:id', ctrl.deleteProduct);
-
 
 app.listen(SERVER_PORT, () => console.log(`Server is running on port ${SERVER_PORT}`));

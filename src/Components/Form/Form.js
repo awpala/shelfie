@@ -55,6 +55,8 @@ class Form extends Component {
             productPrice: 0,
             editProductId: null
         })
+
+        this.props.setFn(null);
     }
 
     handleAdd = () => {
@@ -70,7 +72,15 @@ class Form extends Component {
     }
 
     handleSave = () => {
-        // TO-DO
+        axios.put(`/api/product/${this.state.editProductId}`, {
+            product_name: this.state.productName,
+            price: this.state.productPrice,
+            img_url: this.state.imgURL 
+        })
+        .then(() => this.props.getFn())
+        .catch(err => console.log(err));
+
+        this.handleCancel(); // clear inputs
     }
     
     render() {

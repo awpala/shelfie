@@ -45,8 +45,9 @@ class App extends Component {
             setFn={this.setSelected}
           />
           <Form
-            getFn={this.getInventory}
             selectedProductId={this.state.selectedProductId}
+            getFn={this.getInventory}
+            setFn={this.setSelected}
           />
         </main>
       </div>
